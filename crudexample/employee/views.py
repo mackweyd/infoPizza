@@ -59,12 +59,12 @@ def cardapioEdit(request,id) :
     return render(request,'cardapio/edit.html', {'pizza':pizza})
 
 def cardapioUpdate(request, id):  
-    employee = Pizza.objects.get(id=id)  
-    form = PizzaForm(request.POST, instance = employee)  
+    pizza = Pizza.objects.get(id=id)  
+    form = PizzaForm(request.POST, instance = pizza)  
     if form.is_valid():  
         form.save()  
         return redirect("/cardapio/index.html")  
-    return render(request, 'cardapio/edit.html', {'employee': employee})  
+    return render(request, 'cardapio/edit.html', {'pizza': pizza})  
 
 def cardapioDestroy(request, id):  
     pizza = Pizza.objects.get(id=id)  

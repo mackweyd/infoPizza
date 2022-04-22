@@ -8,6 +8,8 @@ urlpatterns = [
     path('cardapio/edit/<int:id>',views.cardapioEdit),
     path('cardapio/update/<int:id>',views.cardapioUpdate),
     path('cardapio/delete/<int:id>',views.cardapioDestroy),
+    #path('pedidos/index.html'),
+    #path('cozinha/index.html'),
     path('insert',views.insert),
     path('emp', views.emp),  
     path('employee/show',views.show),  
