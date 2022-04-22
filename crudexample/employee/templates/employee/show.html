@@ -1,5 +1,5 @@
 <!DOCTYPE html>  
-<html lang="en">  
+<html lang="pt-br">  
 <head>  
     <meta charset="UTF-8">  
     <title>Employee Records</title>  
@@ -25,8 +25,8 @@
         <td>{{ employee.eemail }}</td>  
         <td>{{ employee.econtact }}</td>  
         <td>  
-            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ employee.id }}">Delete</a>  
+            <a href="/employee/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/employee/delete/{{ employee.id }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  

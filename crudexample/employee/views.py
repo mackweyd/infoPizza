@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect  
-from employee.forms import EmployeeForm  
-from employee.models import Employee  
+from employee.forms import EmployeeForm
+from employee.forms import PizzaForm  
+from employee.models import Employee 
+from employee.models import Pizza 
 # Create your views here.  
 def emp(request):  
     if request.method == "POST":  
@@ -8,26 +10,63 @@ def emp(request):
         if form.is_valid():  
             try:  
                 form.save()  
-                return redirect('/show')  
+                return redirect('/employee/show')  
             except:  
                 pass  
     else:  
         form = EmployeeForm()  
-    return render(request,'index.html',{'form':form})  
+    return render(request,'employee/index.html',{'form':form})  
 def show(request):  
     employees = Employee.objects.all()  
-    return render(request,"show.html",{'employees':employees})  
+    return render(request,"employee/show.html",{'employees':employees})  
 def edit(request, id):  
     employee = Employee.objects.get(id=id)  
-    return render(request,'edit.html', {'employee':employee})  
+    return render(request,'employee/edit.html', {'employee':employee})  
 def update(request, id):  
     employee = Employee.objects.get(id=id)  
     form = EmployeeForm(request.POST, instance = employee)  
     if form.is_valid():  
         form.save()  
-        return redirect("/show")  
-    return render(request, 'edit.html', {'employee': employee})  
+        return redirect("/employee/show")  
+    return render(request, 'employee/edit.html', {'employee': employee})  
 def destroy(request, id):  
     employee = Employee.objects.get(id=id)  
     employee.delete()  
-    return redirect("/show")  
+    return redirect("/employee/show")
+
+def index(request) :
+    return render(request,'index.html') 
+
+def cardapioIndex(request) :
+    pizzas = Pizza.objects.all()  
+    return render(request,"cardapio/index.html",{'pizzas':pizzas}) 
+
+def insert(request) :
+    if request.method == "POST":  
+        form = PizzaForm(request.POST)  
+        if form.is_valid():  
+            try:  
+                form.save()  
+                return redirect('/cardapio/index.html')  
+            except:  
+                pass  
+    else:  
+        form = PizzaForm()  
+    return render(request,'cardapio/insert.html',{'form':form})  
+
+def cardapioEdit(request,id) :
+    pizza = Pizza.objects.get(id=id)  
+    return render(request,'cardapio/edit.html', {'pizza':pizza})
+
+def cardapioUpdate(request, id):  
+    employee = Pizza.objects.get(id=id)  
+    form = PizzaForm(request.POST, instance = employee)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/cardapio/index.html")  
+    return render(request, 'cardapio/edit.html', {'employee': employee})  
+
+def cardapioDestroy(request, id):  
+    pizza = Pizza.objects.get(id=id)  
+    pizza.delete()  
+    return redirect("/cardapio/index.html")
