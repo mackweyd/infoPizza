@@ -17,3 +17,14 @@ class Pizza(models.Model):
     p4 = models.DecimalField(max_digits=4,decimal_places=2)  
     class Meta:  
         db_table = "pizza"  
+
+class Bebida(models.Model):
+    id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=100)
+    marca = models.CharField(max_length=100)
+    p1 = models.DecimalField(max_digits=4,decimal_places=2)
+    p2 = models.DecimalField(max_digits=4,decimal_places=2)
+    p3 = models.DecimalField(max_digits=4,decimal_places=2)
+    p4 = models.DecimalField(max_digits=4,decimal_places=2)
+    class Meta:
+        db_table = "bebida"
