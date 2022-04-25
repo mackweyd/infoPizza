@@ -14,17 +14,20 @@
     <tr>  
         <th>Mesas</th>
         <th>Status</th>
-        <th>Ações</th>
+        <th>Anotar</th>
     </tr>  
     </thead>  
     <tbody>  
 {% for mesa in mesas %}  
     <tr>  
         <td>{{ mesa.id }}</td>
-        <td>{{ mesa.status }}</td>    
+        {% if mesa.status %}
+        <td>Livre</td>    
+        {% else %}
+        <td>Ocupada</td>
+        {%endif%}
         <td>  
-            <a href="/pedidos/mesa/edit/{{ mesa.id }}" class="bi bi-pencil"></a>  
-            <a href="/pedidos/mesa/delete/{{ mesa.id }}"class="bi bi-trash3"></a>  
+            <a href="/pedidos/mesa/order/{{ mesa.id }}" class="bi bi-pencil-square"></a>  
         </td>  
     </tr>  
 {% endfor %}  
@@ -32,6 +35,6 @@
 </table>  
 <br>  
 <br>  
-<a href="/cardapio/bebida/insert" class="btn btn-primary"><i class="bi bi-plus-circle">Inserir Mesa</i></a>  
+<a href="/caixa/mesa/insert" class="btn btn-primary"><i class="bi bi-plus-circle">Inserir Mesa</i></a>  
 </body>  
 </html>  

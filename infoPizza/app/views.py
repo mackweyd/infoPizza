@@ -77,4 +77,29 @@ def cardapioBebidaDestroy(request, id):
     return redirect("/cardapio/bebida")
 
 def pedidosIndex(request) :
-    return render(request,'pedidos/index.html') 
+    mesas = Mesa.objects.all
+    return render(request,'pedidos/index.html',{'mesas':mesas}) 
+    
+def pedidosMesaOrder(request,id) :
+    if request.method == "POST":  
+        form = ItensPedidoForm(request.POST)
+        if form.is_valid():  
+            try:  
+                form.save()  
+                return redirect('/pedidos')  
+            except:  
+                pass  
+    else:  
+        form = ItensPedidoForm 
+        pedidonovo = Pedido()
+        pedidonovo.save()
+        form(initial={'id':pedidonovo.id})
+        mesa = Mesa.objects.get(id=id)
+        mesa() = pedidonovo.id
+        mesa.save()        
+    return render(request,'pedidos/mesa/order.html',{'form':form})
+
+def caixaMesaInsert(request) :
+    Mesa.objects.create()
+    return redirect('/pedidos')
+  

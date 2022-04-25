@@ -1,6 +1,6 @@
 from django.contrib import admin  
 from django.urls import path  
-from app import views  
+from app import views
 urlpatterns = [  
     path('admin/', admin.site.urls),
     path('',views.index),
@@ -15,5 +15,7 @@ urlpatterns = [
     path('cardapio/bebida/edit/<int:id>',views.cardapioBebidaEdit),
     path('cardapio/bebida/update/<int:id>',views.cardapioBebidaUpdate),
     path('cardapio/bebida/delete/<int:id>',views.cardapioBebidaDestroy),
-    path('pedidos/',views.pedidosIndex)
+    path('pedidos/',views.pedidosIndex),
+    path('pedidos/mesa/order/<int:id>',views.pedidosMesaOrder),
+    path('caixa/mesa/insert',views.caixaMesaInsert)
 ]  

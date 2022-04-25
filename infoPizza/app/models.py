@@ -24,22 +24,23 @@ class Bebida(models.Model):
 
 class Pedido(models.Model):
     id = models.AutoField(primary_key=True)
-    status = models.CharField(max_length=50)
-    preco =  models.DecimalField(max_digits=4,decimal_places=2)
-    metodo_pag = models.CharField(max_length=50)
+    status = models.CharField(max_length=50,null=True)
+    preco =  models.DecimalField(max_digits=4,decimal_places=2,null=True)
+    metodo_pag = models.CharField(max_length=50,null=True)
     class Meta:
         db_table = "pedido"
 
 class ItensPedido(models.Model):
-    id = models.OneToOneField(Pedido,on_delete=models.CASCADE,primary_key=True)
+    pedido = models.ForeignKey(Pedido,on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
+    tamanho = models.CharField(max_length=100)
     preco = models.DecimalField(max_digits=4,decimal_places=2)
     class Meta:
         db_table = "itensPedido"
 
 class Mesa(models.Model):
     id = models.AutoField(primary_key=True)
-    status = models.BooleanField()
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    status = models.BooleanField(default=True)
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE,null=True)
     class Meta:
         db_table = "mesa"
