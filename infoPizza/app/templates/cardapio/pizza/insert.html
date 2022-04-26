@@ -20,7 +20,8 @@
   </div>  
     <div class="form-group row">  
     <label class="col-sm-2 col-form-label">Nome da Pizza:</label>  
-    <div class="col-sm-4">  
+    <div class="col-sm-4">
+      {{ form.cat.as_hidden }}   
       {{ form.nome }}  
     </div>  
   </div>  
@@ -49,7 +50,8 @@
         <div class="form-group row">  
             <label class="col-sm-2 col-form-label">GG</label>  
             <div class="col-sm-4">  
-              {{ form.p4 }}  
+              {{ form.p4 }}
+              
             </div>    
   </div>  
     <div class="form-group row">  

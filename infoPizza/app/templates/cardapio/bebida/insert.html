@@ -16,20 +16,23 @@
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
     <h3>Inserir Bebida</h3>  
+    
     </div>  
   </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Nome da Bebida</label>  
-    <div class="col-sm-4">  
-      {{ form.nome }}  
-    </div>  
   </div>  
   <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Marca</label>  
-    <div class="col-sm-4">  
-      {{ form.marca }}  
+    <label class="col-sm-2 col-form-label">Nome</label>  
+    <div class="col-sm-4">
+      {{ form.cat.as_hidden }}   
+      {{ form.nome }}  
     </div>  
-  </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Descrição</label>  
+    <div class="col-sm-4">  
+      {{ form.desc }}  
+    </div>  
+  </div>   
     <div class="form-group row">  
     <label class="col-sm-2 col-form-label">350ml</label>  
     <div class="col-sm-4">  

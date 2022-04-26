@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',  
     'django.contrib.messages',  
     'django.contrib.staticfiles',  
-    'app'  
+    'app',
+    'django_pdb'  
 ]  
 
 MIDDLEWARE = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_pdb.middleware.PdbMiddleware'
 ]
 
 ROOT_URLCONF = 'infoPizza.urls'
